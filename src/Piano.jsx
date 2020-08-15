@@ -9,18 +9,7 @@ export default class Piano extends Component {
       blackKeys: ["C#", "D#", "E#", "F#", "G#", "A#"],
     };
   }
-  componentDidMount() {
-    // this.state.whiteKeys.map((item) => console.log(item));
-    // let whiteKeys = document.querySelectorAll(".white"),
-    //   blackKeys = document.querySelectorAll(".black");
-    // [...whiteKeys].map(
-    //   (item, idx) => (item.innerHTML = this.state.whiteKeys[idx])
-    // );
-    // [...blackKeys].map(
-    //   (item, idx) => (item.innerHTML = this.state.blackKeys[idx])
-    // );
-    // console.log(whiteKeys);
-  }
+
   thisKey = (e) => {
     console.log(e.currentTarget);
   };
@@ -36,8 +25,11 @@ export default class Piano extends Component {
             </Key>
           ))}
           <div className="black-keys">
-            {this.state.blackKeys.map((keys) => (
-              <Key keyPress={this.thisKey} keyColor="black">
+            {this.state.blackKeys.map((keys, idx) => (
+              <Key
+                keyPress={this.thisKey}
+                keyColor={idx === 2 ? "black empty" : "black"}
+              >
                 {keys}
               </Key>
             ))}
